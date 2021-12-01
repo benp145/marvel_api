@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+{% if char != None %}
+
+<h3>{{ char.name  }}</h3>
+
+<div>
+    
+    <ul class="list-group">
+            <li class="list-group-item">
+                <p>Description: {{ char.description }}</p>
+                <p>Number of comics appears in: {{ char.comics_appeared_in }}</p>
+                <p>Super Powers: {{ char.super_power }}</p>
+                <p>Added by {{ char.user.first_name }} on {{  char.date_created  }}</p>
+            </li>
+        </ul>
+        
+    </div>
+    
+    
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+
+<div>
+    <h3>
+        Home
+        {% if current_user.is_authenticated %}
+            | Welcome {{ current_user.first_name }} {{ current_user.last_name }} ({{ current_user.email }})
+        {% endif %}
+    </h3>
+    
+    <hr>
+
+
+
+</div>
+
+
+{% endblock content %}

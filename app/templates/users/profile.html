@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div>
+    <h3>Profile</h3>
+    <hr>
+
+    <div class="row">
+        <div class="col-3">
+            <img src="https://via.placeholder.com/500/1000" alt="Profile Image" class="img-fluid">
+        </div>
+        <div class="col-9">
+            <form action="{{ url_for('users.profile') }}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" value="{{ current_user.first_name }}"class="form-control" name="f_name">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" value="{{ current_user.last_name }}"class="form-control" name="l_name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="file" placeholder="Image" name="image" calss="form-control-file">
+                </div>
+                <div class="form-group">
+                    <input type="email" value="{{ current_user.email }}" name="email" calss="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" name="password" calss="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Confirm Password" name="confirm_password" calss="form-control">
+                </div>
+                <input type="submit" value="Update Profile" calss="btn btn-info btn-block">
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+
+<div>
+    <h3>Your Characters</h3>
+    <hr>
+
+    <div class="card-deck row">
+
+        {% for c in characters %}
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{{ url_for('characters.char', id=c.id) }}">{{ c.name }}</a>
+                    </h4>
+                    <p class="card-text">{{ c.description|truncate(50, True) }}</p>
+                    <p class="card-text">Powers: {{ c.super_power }}</p>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+{% endblock content %}

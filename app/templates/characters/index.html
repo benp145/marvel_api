@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+
+<div>
+    <h3>Characters</h3>
+    <hr>
+
+    <div class="card-deck row">
+
+        {% for c in characters %}
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{{ url_for('characters.char', id=c.id) }}">{{ c.name }}</a>
+                    </h4>
+                    <p class="card-text">{{ c.description|truncate(50, True) }}</p>
+                    <p class="card-text">Powers: {{ c.super_power }}</p>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+{% endblock content %}
